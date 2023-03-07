@@ -1,8 +1,8 @@
-#Configuration automatique d'une VM avec mariadb
+# Configuration automatique d'une VM avec mariadb
 
-##lycée Fulbert - lmery
+## lycée Fulbert - lmery
 
-###To Do
+### To Do
 
 En cas de problème avec les vbguest-tools
 
