@@ -1,14 +1,14 @@
 #Configuration automatique d'une VM avec mariadb
 
-##lycÃ©e Fulbert - lmery
+##lycée Fulbert - lmery
 
 ###To Do
 
-En cas de problÃ¨me avec les vbguest-tools
+En cas de problème avec les vbguest-tools
 
-Bien vÃ©rifier que le plugin vagrant vbguest est bien installÃ©. Voir doc [ici](https://github.com/dotless-de/vagrant-vbguest)
+Bien vérifier que le plugin vagrant vbguest est bien installé. Voir doc [ici](https://github.com/dotless-de/vagrant-vbguest)
 
-se connecter en ssh Ã  la VM via
+se connecter en ssh à la VM via
 
 `vagrant ssh
 
@@ -22,7 +22,7 @@ quitter la session ssh puis faire un
 
 `vagrant reload
 
-Tant que les guest tools ne sont pas correctement installÃ© le provisionnement ne fonctionnera pas car il faut monter le volume dans la VM.
+Tant que les guest tools ne sont pas correctement installé le provisionnement ne fonctionnera pas car il faut monter le volume dans la VM.
 
 Pour provisionner:
 `vagrant provision
