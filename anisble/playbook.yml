@@ -18,23 +18,23 @@
       tags: [ system ]
 
    # Mariadb Configuration
-    - name: Personnalisation du compte root
-      mysql_user:
-        name: root
-        password: "{{ mysql_root_password }}"
-        login_unix_socket: /var/run/mysqld/mysqld.sock
-      tags: [ mysql, mysql-root ]
+   # - name: Personnalisation du compte root
+   #   mysql_user:
+   #     name: root
+   #     password: "{{ mysql_root_password }}"
+   #     login_unix_socket: /var/run/mysqld/mysqld.sock
+   #   tags: [ mysql, mysql-root ]
 
     - name: Suppression des comptes anonymes
       mysql_user:
         name: ''
         host_all: yes
         state: absent
-        login_user: root
+        login_user: root          #
         login_password: "{{ mysql_root_password }}"
       tags: [ mysql ]
 
-    - name: RSuppression de la base de test
+    - name: Suppression de la base de test
       mysql_db:
         name: test
         state: absent
@@ -60,3 +60,19 @@
         login_user: root
         login_password: "{{ mysql_root_password }}"
       tags: [ mysql ]
+      
+      
+    - name: Ouverture du socket ({{ mysql_bind_address }}:3306
+      ini_file:
+        dest: /etc/mysql/mariadb.conf.d/50-server.cnf
+        section: mysqld
+        option: "{{ item.option }}"
+        value: "{{ item.value }}"
+      with_items:
+        - { option: bind-address, value: "{{ mysql_bind_address }}" }
+      tags: [ mysql ]
+      
+    - name: restart mariadb
+      command: systemctl restart mariadb
+      tags: [ mysql ]
+        
