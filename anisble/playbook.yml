@@ -53,6 +53,7 @@
     - name: Creattion de l'utilisateur associé
       mysql_user:
         name: "{{ mysql_user }}"
+        host: "%"
         password: "{{ mysql_password }}"
         priv: "{{ mysql_db }}.*:ALL"
         state: present
