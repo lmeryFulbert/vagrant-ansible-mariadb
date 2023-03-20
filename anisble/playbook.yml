@@ -3,6 +3,9 @@
 #########################################################
 ---
 - hosts: all
+  # pour un deploiement en local
+  #hosts: localhost
+  #connection: local 
   become: true
   vars_files:
     - vars/default.yml
@@ -18,12 +21,12 @@
       tags: [ system ]
 
    # Mariadb Configuration
-   # - name: Personnalisation du compte root
-   #   mysql_user:
-   #     name: root
-   #     password: "{{ mysql_root_password }}"
-   #     login_unix_socket: /var/run/mysqld/mysqld.sock
-   #   tags: [ mysql, mysql-root ]
+    - name: Personnalisation du compte root
+      mysql_user:
+        name: root
+        password: "{{ mysql_root_password }}"
+        login_unix_socket: /var/run/mysqld/mysqld.sock
+      tags: [ mysql, mysql-root ]
 
     - name: Suppression des comptes anonymes
       mysql_user:
